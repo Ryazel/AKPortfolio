@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Table Student Score</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            max-width: 640px;
+            font-family: system-ui, -apple-system, sans-serif;
+            background: #d4d4d4;
+        }
+
+        th, td {
+            padding: 14px 20px;
+            border: none;
+            border-bottom: 1px solid #ff0000;
+            vertical-align: middle;
+        }
+
+        thead th {
+            font-weight: 700;
+        }
+
+        .col-no,
+        .col-name {
+            text-align: left;
+        }
+
+        .col-score,
+        .col-html,
+        .col-css,
+        .col-bootstrap {
+            text-align: center;
+        }
+
+        thead tr {
+            background-color: #ace6ff;
+        }
+
+        tbody tr:nth-child(1) {
+            background-color: #ffffff;
+        }
+
+        tbody tr:nth-child(2) {
+            background-color: #ffffff;
+        }
+
+        tbody tr:nth-child(3) {
+            background-color: #ffffff;
+        }
+
+        tbody tr:nth-child(4) {
+            background-color: #ffffff;
+        }
+        tbody tr:nth-child(5) {
+            background-color: #ffffff;
+        }
+    </style>
+</head>
+<body>
+    <center>
+    <table>
+        <thead>
+            <tr>
+                <th class="col-no">No</th>
+                <th class="col-name">Books</th>
+                <th class="col-score">Author</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="col-no">1</td>
+                <td class="col-name">CANTO I</td>
+                <td class="col-score">Limbus Company</td>
+            </tr>
+            <tr>
+                <td class="col-no">2</td>
+                <td class="col-name">INFERNO I</td>
+                <td class="col-score">Limbus Company</td>
+            </tr>
+            <tr>
+                <td class="col-no">3</td>
+                <td class="col-name">INTERVALLO I </td>
+                <td class="col-score">Limbus Company</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <br>
+
+    <table>
+        <thead>
+            <tr>
+                <th class="col-no" rowspan="2">No</th>
+                <th class="col-name" rowspan="2">Name</th>
+                <th class="col-score" colspan="3">Score for each exam</th>
+            </tr>
+            <tr>
+                <th class="col-html">HTML</th>
+                <th class="col-css">CSS</th>
+                <th class="col-bootstrap">Bootstrap</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="col-no">1</td>
+                <td class="col-name">TonyYu</td>
+                <td class="col-html">90</td>
+                <td class="col-css">88</td>
+                <td class="col-bootstrap">95</td>
+            </tr>
+            <tr>
+                <td class="col-no">2</td>
+                <td class="col-name">Bob</td>
+                <td class="col-html">85</td>
+                <td class="col-css">90</td>
+                <td class="col-bootstrap">92</td>
+            </tr>
+            <tr>
+                <td class="col-no">3</td>
+                <td class="col-name">Jesicca</td>
+                <td class="col-html">87</td>
+                <td class="col-css">92</td>
+                <td class="col-bootstrap">91</td>
+            </tr>
+            <tr>
+                <td class="col-no">4</td>
+                <td class="col-name">LittleTimmy</td>
+                <td class="col-html">78</td>
+                <td class="col-css">80</td>
+                <td class="col-bootstrap">79</td>
+            </tr>
+            <tr>
+                <td class="col-no">5</td>
+                <td class="col-name">Waldo</td>
+                <td class="col-html">Find me first</td>
+                <td class="col-css">Find me first</td>
+                <td class="col-bootstrap">Find me first</td>
+            </tr>
+        </tbody>
+    </table>
+    </center>
+</body>
+</html>

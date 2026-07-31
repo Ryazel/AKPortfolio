@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Technology & Github</title>
+<style>
+    body {
+        /* Plain background before activation */
+        background: #f3f4f6;
+        min-height: 100vh;
+        margin: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: Arial, sans-serif;
+    }
+    .container {
+        text-align: center;
+    }
+    h1 {
+        color: #1f3c88;
+        background-color: rgba(255, 255, 255, 0.88);
+        padding: 18px 30px;
+        border-radius: 14px;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+        margin-bottom: 24px;
+    }
+
+    /* Backgrounds applied after selecting a choice */
+    body.activated-rhinelab {
+        background-image: url("Images/RhineLab.png");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+    body.activated-sargon {
+        background-image: url("Images/Sargon.png");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+
+    body.activated-rhinelab h1,
+    body.activated-sargon h1 {
+        color: #ffffff;
+        background-color: rgba(0, 0, 0, 0.18);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+        text-shadow: 1px 2px 8px rgba(0,0,0,0.35);
+    }
+    button {
+        background-color: #007bff;
+        color: #ffffff;
+        border: none;
+        padding: 14px 28px;
+        font-size: 16px;
+        border-radius: 10px;
+        cursor: pointer;
+        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+        transition: background-color 0.2s ease, transform 0.2s ease;
+    }
+    button:hover {
+        background-color: #00818d;
+        transform: translateY(-2px);
+    }
+
+    .choices {
+        display: flex;
+        gap: 16px;
+        justify-content: center;
+        align-items: center;
+        margin-top: 18px;
+    }
+    .hidden {
+        display: none !important;
+    }
+
+    .choice-card {
+        width: 160px;
+        padding: 10px;
+        border-radius: 14px;
+        background: rgba(255, 255, 255, 0.88);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.14);
+        cursor: pointer;
+        transition: transform 0.15s ease, box-shadow 0.15s ease;
+        user-select: none;
+    }
+    .choice-card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+    }
+    .choice-card img {
+        width: 100%;
+        height: 120px;
+        object-fit: cover;
+        border-radius: 10px;
+        display: block;
+        margin-bottom: 8px;
+    }
+    .choice-label {
+        font-weight: 700;
+        color: #1f3c88;
+        text-align: center;
+    }
+
+    .second-section {
+        width: 90%;
+        max-width: 540px;
+        margin-top: 22px;
+        text-align: left;
+    }
+
+    .field {
+        margin-bottom: 12px;
+    }
+
+    .field label {
+        display: block;
+        font-weight: 700;
+        margin-bottom: 6px;
+        color: #1f3c88;
+    }
+
+    .field input,
+    .field textarea {
+        width: 100%;
+        padding: 10px 12px;
+        border-radius: 12px;
+        border: 1px solid rgba(31, 60, 136, 0.25);
+        outline: none;
+        font-size: 14px;
+    }
+
+    .result-card {
+        margin-top: 16px;
+        padding: 16px 18px;
+        border-radius: 16px;
+        background: rgba(255, 255, 255, 0.92);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.14);
+        display: block;
+    }
+
+    .result-title {
+        font-weight: 900;
+        color: #1f3c88;
+        margin-bottom: 10px;
+    }
+
+    .result-row {
+        margin: 8px 0;
+        color: #173061;
+    }
+
+    body.activated-rhinelab .result-card,
+    body.activated-sargon .result-card {
+        background: rgba(0, 0, 0, 0.25);
+        box-shadow: 0 12px 36px rgba(0, 0, 0, 0.25);
+    }
+
+    body.activated-rhinelab .result-title,
+    body.activated-sargon .result-title {
+        color: #ffffff;
+    }
+
+    body.activated-rhinelab .result-row,
+    body.activated-sargon .result-row {
+        color: rgba(255, 255, 255, 0.95);
+    }
+
+    .congrats-modal {
+        position: fixed;
+        inset: 0;
+        z-index: 9999;
+        background: rgba(0, 0, 0, 0.5);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 16px;
+    }
+
+    .congrats-modal__content {
+        width: 100%;
+        max-width: 420px;
+        background: #ffffff;
+        border-radius: 18px;
+        padding: 22px 18px;
+        box-shadow: 0 18px 60px rgba(0, 0, 0, 0.35);
+        text-align: center;
+    }
+
+    .congrats-modal__content h2 {
+        margin: 0 0 8px 0;
+        color: #1f3c88;
+    }
+
+    .congrats-modal__content p {
+        margin: 0 0 14px 0;
+        color: #173061;
+        font-weight: 600;
+    }
+</style>
+</head>
+<body>
+    <div class="container">
+        <h1 id="pageTitle">Project Technology & Github</h1>
+        <button id="activationBtn" onclick="firstActivation()">Choose Backgrounds</button>
+
+        <div id="backgroundChoices" class="choices hidden" aria-label="Background choices">
+            <div class="choice-card" onclick="activateBackground('rhinelab')" role="button" tabindex="0">
+                <img src="Images/RhineLab.png" alt="RhineLab background" />
+                <div class="choice-label">RhineLab</div>
+            </div>
+
+            <div class="choice-card" onclick="activateBackground('sargon')" role="button" tabindex="0">
+                <img src="Images/Sargon.png" alt="Sargon background" />
+                <div class="choice-label">Sargon</div>
+            </div>
+        </div>
+
+        <button id="secondBtn" class="hidden" onclick="showSecondActivation()">Input Attendance Info</button>
+
+        <div id="secondSection" class="second-section hidden" aria-label="Attendance form">
+            <div id="formFields">
+                <div class="field">
+                    <label for="inputName">Name</label>
+                    <input id="inputName" type="text" placeholder="Enter your name" />
+                </div>
+
+                <div class="field">
+                    <label for="inputAbsence">Absence</label>
+                    <input id="inputAbsence" type="text" placeholder="Enter absence" />
+                </div>
+
+                <div class="field">
+                    <label for="inputJobdesk">Jobdesk</label>
+                    <textarea id="inputJobdesk" rows="4" placeholder="Enter jobdesk"></textarea>
+                </div>
+            </div>
+
+            <button id="sendBtn" onclick="sendSecondActivation()">Send</button>
+
+            <div id="resultCard" class="result-card hidden">
+                <div class="result-title">Preview Card</div>
+                <div class="result-row"><strong>Name:</strong> <span id="cardName">-</span></div>
+                <div class="result-row"><strong>Absence:</strong> <span id="cardAbsence">-</span></div>
+                <div class="result-row"><strong>Jobdesk:</strong> <span id="cardJobdesk">-</span></div>
+            </div>
+
+            <button id="lastBtn" class="hidden" onclick="finishProject()">Stop Flickering</button>
+        </div>
+    </div>
+
+    <div id="congratsModal" class="congrats-modal hidden" aria-label="Congratulations message">
+        <div class="congrats-modal__content">
+            <h2>Congratulations!</h2>
+            <p>Congratulation for completing Project Technology & Github</p>
+            <button onclick="closeCongrats()">OK</button>
+        </div>
+    </div>
+
+    <script>
+        let errorIntervalId = null;
+        let previousBackgroundClass = "";
+
+        function firstActivation() {
+            const choices = document.getElementById("backgroundChoices");
+            const btn = document.getElementById("activationBtn");
+            const title = document.getElementById("pageTitle");
+
+            // Show background options and prompt the user.
+            choices.classList.remove("hidden");
+            title.textContent = "Choose a Background";
+            btn.textContent = "Select Background";
+            btn.disabled = true;
+        }
+
+        function activateBackground(which) {
+            // Remove any previous activated background class.
+            document.body.classList.remove("activated-rhinelab", "activated-sargon");
+
+            if (which === "rhinelab") {
+                document.body.classList.add("activated-rhinelab");
+                document.getElementById("pageTitle").textContent = "RhineLab";
+            } else {
+                document.body.classList.add("activated-sargon");
+                document.getElementById("pageTitle").textContent = "Sargon";
+            }
+
+            // Hide choices after selection.
+            document.getElementById("backgroundChoices").classList.add("hidden");
+            const btn = document.getElementById("activationBtn");
+            btn.textContent = "Activated";
+            btn.classList.add("hidden");
+
+            // Show the second activation step after choosing a background.
+            const secondBtn = document.getElementById("secondBtn");
+            secondBtn.classList.remove("hidden");
+            secondBtn.disabled = false;
+        }
+
+        function showSecondActivation() {
+            const section = document.getElementById("secondSection");
+            const btn = document.getElementById("secondBtn");
+            const formFields = document.getElementById("formFields");
+            const sendBtn = document.getElementById("sendBtn");
+            const resultCard = document.getElementById("resultCard");
+            const lastBtn = document.getElementById("lastBtn");
+
+            section.classList.remove("hidden");
+            btn.disabled = true;
+            btn.classList.add("hidden");
+
+            // Inputs are visible until the user presses "Send".
+            formFields.classList.remove("hidden");
+            sendBtn.classList.remove("hidden");
+            resultCard.classList.add("hidden");
+            lastBtn.classList.add("hidden");
+
+            bindSecondInputsOnce();
+            updateCardFromInputs();
+        }
+
+        function sendSecondActivation() {
+            const formFields = document.getElementById("formFields");
+            const sendBtn = document.getElementById("sendBtn");
+            const resultCard = document.getElementById("resultCard");
+            const lastBtn = document.getElementById("lastBtn");
+            const secondBtn = document.getElementById("secondBtn");
+
+            // Save current background choice so we can restore it later.
+            if (document.body.classList.contains("activated-rhinelab")) {
+                previousBackgroundClass = "activated-rhinelab";
+            } else if (document.body.classList.contains("activated-sargon")) {
+                previousBackgroundClass = "activated-sargon";
+            } else {
+                previousBackgroundClass = "";
+            }
+
+            updateCardFromInputs();
+
+            formFields.classList.add("hidden");
+            sendBtn.classList.add("hidden");
+            resultCard.classList.remove("hidden");
+            secondBtn.classList.add("hidden");
+
+            // Start the constantly changing "error" background.
+            startErrorBackground();
+            lastBtn.classList.remove("hidden");
+        }
+
+        function startErrorBackground() {
+            if (errorIntervalId) clearInterval(errorIntervalId);
+
+            // Remove any background image so color cycling is visible.
+            document.body.classList.remove("activated-rhinelab", "activated-sargon");
+            document.body.style.backgroundImage = "none";
+
+            errorIntervalId = setInterval(() => {
+                const hue = Math.floor(Math.random() * 360);
+                document.body.style.backgroundColor = `hsl(${hue} 95% 55%)`;
+            }, 120);
+        }
+
+        function finishProject() {
+            if (errorIntervalId) {
+                clearInterval(errorIntervalId);
+                errorIntervalId = null;
+            }
+
+            // Restore previous background choice, or fall back to plain background.
+            document.body.style.backgroundColor = "";
+            document.body.style.backgroundImage = "";
+            document.body.classList.remove("activated-rhinelab", "activated-sargon");
+
+            if (previousBackgroundClass) {
+                document.body.classList.add(previousBackgroundClass);
+            }
+
+            document.getElementById("lastBtn").classList.add("hidden");
+            document.getElementById("congratsModal").classList.remove("hidden");
+        }
+
+        function closeCongrats() {
+            document.getElementById("congratsModal").classList.add("hidden");
+        }
+
+        function bindSecondInputsOnce() {
+            if (window.__secondInputsBound) return;
+            window.__secondInputsBound = true;
+
+            const nameEl = document.getElementById("inputName");
+            const absenceEl = document.getElementById("inputAbsence");
+            const jobdeskEl = document.getElementById("inputJobdesk");
+
+            nameEl.addEventListener("input", updateCardFromInputs);
+            absenceEl.addEventListener("input", updateCardFromInputs);
+            jobdeskEl.addEventListener("input", updateCardFromInputs);
+        }
+
+        function updateCardFromInputs() {
+            const name = (document.getElementById("inputName").value || "").trim();
+            const absence = (document.getElementById("inputAbsence").value || "").trim();
+            const jobdesk = (document.getElementById("inputJobdesk").value || "").trim();
+
+            document.getElementById("cardName").textContent = name || "-";
+            document.getElementById("cardAbsence").textContent = absence || "-";
+            document.getElementById("cardJobdesk").textContent = jobdesk || "-";
+        }
+    </script>
+</body>
+</html>
