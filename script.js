@@ -11,7 +11,7 @@ function changecolor() {
 }
 
 function changeall() {
-    document.getElementById("body").style.backgroundImage = "url('images/senator-armstrong.gif')";
+    document.getElementById("body").style.backgroundImage = "url('Images/senator-armstrong.gif')";
     document.getElementById("title").style.fontSize = "65px";
     document.getElementById("title").innerHTML = "Nanomachines Son!";
     document.getElementById("title").style.color = "red";
