@@ -39,16 +39,13 @@
     <p>NOTE: <strong>This Will NOT WORK Without SERVER</strong></p>
 
     <?php
-    // Grab submitted values (avoid overwriting $_POST directly)
     $name          = htmlspecialchars($_POST["name"] ?? "");
     $generalScore  = floatval($_POST["GeneralScore"] ?? 0);
     $midScore      = floatval($_POST["MidScore"] ?? 0);
     $lastScore     = floatval($_POST["LastScore"] ?? 0);
 
-    // Final grade = 30% assignment + 30% mid-term + 40% final exam
     $finalGrade = (0.30 * $generalScore) + (0.30 * $midScore) + (0.40 * $lastScore);
 
-    // Description based on final grade
     if ($finalGrade >= 90) {
         $description = "Excellent";
         $descClass = "excellent";

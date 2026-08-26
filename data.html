@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Output</title>
+    <style>
+        h1 {
+            text-align: center;
+        }
+        table {
+            margin: 0 auto;
+            border-collapse: collapse;
+            width: 400px;
+        }
+        td {
+            padding: 8px 12px;
+            border-bottom: 1px solid #ccc;
+        }
+        .result {
+            text-align: center;
+            font-size: 22px;
+            margin-top: 20px;
+        }
+        .excellent { color: green; }
+        .good { color: #2e7dd7; }
+        .fair { color: orange; }
+        .needs-improvement { color: red; }
+
+        p {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>Input Success <br> <br>
+    Student Data</h1>
+
+    <p><strong>This file is originaly a PHP</strong>, <u>Changed to html to work in github.io</u></p>
+
+    <table>
+        <tr>
+            <td>Student Name</td>
+            <td id="name"></td>
+        </tr>
+        <tr>
+            <td>Assignment Grade</td>
+            <td id="generalScore"></td>
+        </tr>
+        <tr>
+            <td>Mid-term Exam Grade</td>
+            <td id="midScore"></td>
+        </tr>
+        <tr>
+            <td>Final Exam Grade</td>
+            <td id="lastScore"></td>
+        </tr>
+        <tr>
+            <td><strong>Final Grade</strong></td>
+            <td><strong id="finalGrade"></strong></td>
+        </tr>
+    </table>
+
+    <p id="description" class="result"></p>
+
+    <script>
+        const params = new URLSearchParams(window.location.search);
+
+        const name = params.get("name") || "";
+        const generalScore = parseFloat(params.get("GeneralScore")) || 0;
+        const midScore = parseFloat(params.get("MidScore")) || 0;
+        const lastScore = parseFloat(params.get("LastScore")) || 0;
+
+        const finalGrade = (0.30 * generalScore) + (0.30 * midScore) + (0.40 * lastScore);
+
+        let description = "Needs Improvement";
+        let descClass = "needs-improvement";
+
+        if (finalGrade >= 90) {
+            description = "Excellent";
+            descClass = "excellent";
+        } else if (finalGrade >= 80) {
+            description = "Good";
+            descClass = "good";
+        } else if (finalGrade >= 70) {
+            description = "Fair";
+            descClass = "fair";
+        }
+
+        document.getElementById("name").textContent = name;
+        document.getElementById("generalScore").textContent = generalScore;
+        document.getElementById("midScore").textContent = midScore;
+        document.getElementById("lastScore").textContent = lastScore;
+        document.getElementById("finalGrade").textContent = finalGrade.toFixed(2);
+
+        const descEl = document.getElementById("description");
+        descEl.textContent = description;
+        descEl.classList.add(descClass);
+    </script>
+</body>
+</html>
