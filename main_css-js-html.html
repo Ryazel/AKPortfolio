@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body id="body">
+    <div class="container">
+      <h1 id="title">CSS Learning</h1>
+      <p id="paragraph">learning how to make a web page</p>
+      <form action="data.php" method="post">
+        <table>
+          <table>
+            <tr>
+                <td><label>Student Name</label></td>
+                <td><input type="text" name="name" placeholder="Input Name" required></td>
+            </tr>
+            <tr>
+                <td><label>Email</label></td>
+                <td><input type="email" name="email" placeholder="input Email" required></td>
+            </tr>
+            <tr>
+                <td><label>Password</label></td>
+                <td><input type="text" maxlength="6" name="password" placeholder="Input password" required></td>
+            </tr>
+            <tr>
+                <td><label>General Task Score</label></td>
+                <td><input type="number" name="GeneralScore" placeholder="General Score" required></td>
+            </tr>
+            <tr>
+                <td><label>Mid Exam Score</label></td>
+                <td><input type="number" name="MidScore" placeholder="Mid Semester Exam Score" required></td>
+            </tr>
+            <tr>
+                <td><label>Final Exam Score</label></td>
+                <td><input type="number" name="LastScore" placeholder="Last Semester Exam Score" required></td>
+            </tr>
+            <tr>
+                <td>
+                    <hr size="1" color="black">
+                    <button type="submit">Submit</button>
+                    <button type="reset">Clear</button>
+                </td>
+            </tr>
+        </table>
+      </form>
+      <br>
+      <button id="mainbutton" onclick="changetitle()">Change Title</button>
+      <button id="mainbutton" onclick="changebg()">Change Background</button>
+      <button id="mainbutton" onclick="changecolor()">Change Title Color</button>
+      <button id="mainbutton" onclick="changeparagraphsize()">Change Paragraph Size</button>
+      <button id="mainbutton" onclick="changebuttonsize()">Change Button Size</button>
+      <button id="mainbutton" onclick="changebuttonborder()">Change Button Border Radius</button>
+      <button id="mainbutton" onclick="changebuttoncolor()">Change Button Color</button>
+      <button id="mainbutton" onclick="changeall()">Change Everything</button>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
