@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Bioshock4000</title>
+    <link rel="stylesheet" href="BioShockStyle.css">
+</head>
+<body>
+    <div id="div1">
+        <h1>Bioshock</h1>
+    <form action="ProcessBioshock.html" method="get">
+        <div id="div2">
+        <table>
+            <tr>
+                <td><label>NIS</label></td>
+                <td><input type="text" name="BioNIS" placeholder="Input NIS" required></td>
+            </tr>
+            <tr>
+                <td><label>Name</label></td>
+                <td><input type="text" maxlength="50" name="BioName" placeholder="input Name" required></td>
+            </tr>
+            <tr>
+                <td><label>Birth Date</label></td>
+                <td><input type="date" name="BioDate" placeholder="Input Birth Date" required></td>
+            </tr>
+            <tr>
+                <td><label>Gender</label></td>
+                <td>
+                 <input type="radio" id="Male" name="BioGender" value="Male" required>
+                 <label for="Male">Male</label>
+                 <input type="radio" id="Female" name="BioGender" value="Female" required>
+                 <label for="Female">Female</label>
+                </td>
+            </tr>    
+            <tr>
+                <td><label>Major</label></td>
+                <td>
+                    <select name="BioMajor" id="BioMajor" required>
+                    <option value="None" selected>Choose Major</option>
+                    <option value="TB">TB</option>
+                    <option value="TEI">TEI</option>
+                    <option value="TKJ">TKJ</option>
+                    <option value="TKR">TKR</option>
+                    <option value="TP">TP</option>
+                    <option value="TPSB">TPSB</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td><label>Email</label></td>
+                <td><input type="email" name="BioEmail" placeholder="Email Domain"></td>
+            </tr>
+            <tr>
+                <td><label>Height</label></td>
+                <td><input type="number" name="BioHeight" placeholder="Input Body Height"></td>
+            </tr>
+            <tr>
+                <td><label>Extra</label></td>
+                <td>
+                    <input id="Scout" type="checkbox" name="BioExtra" value="Scout">
+                    <label for="Scout">Scout</label> <br>
+                    <input type="checkbox" name="BioExtra" id="Goodminton" value="Badminton">
+                    <label for="Goodminton">Badminton</label> <br>
+                    <input type="checkbox" name="BioExtra" id="Band" value="Band">
+                    <label for="Band">Band</label> <br>
+                    <input type="checkbox" name="BioExtra" id="Go-on" value="Go-on">
+                    <label for="Go-on">Go on</label> <br>
+                    <input type="checkbox" name="BioExtra" id="Edging" value="Edging">
+                    <label for="Edging">Edging</label> <br>
+                </td>
+            </tr>
+            <tr>
+                <td><label>Address</label></td>
+                <td><textarea name="BioAddress" placeholder="Input Address" rows="3" cols="13"></textarea></td>
+            </tr>
+            <tr>
+                <td>
+                    <img id="RAT" src="spinning-rat.gif" alt="RAT" width="100" height="100">
+                    <br>
+                    <button type="submit">Submit</button>
+                    <button type="reset">Clear</button>
+                </td>
+            </tr>
+        </table>
+        </div>
+    </form>
+    </div> 
+    <br>
+    <div id="div3">
+    <button onclick="changebackground()">Change Background</button>
+    </div>
+    <script src="BioshockScript.js"></script>
+</body>
+</html>

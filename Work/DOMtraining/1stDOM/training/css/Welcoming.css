@@ -1,0 +1,67 @@
+
+h1#title {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    text-align: center;
+}
+
+h1#title:hover {
+    font-family: cursive;
+    text-align: center;
+    color: rgb(255, 0, 0);
+    transform: scale(1.4);
+}
+
+h2 {
+    font-family: cursive;
+    text-align: center;
+    font-size: medium;
+
+}
+
+button#submit {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+button#submit:hover {
+    transform: scale(0.6);
+    background-color: brown;
+    border: 2px solid black;
+    color: white;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+button#submit.pressed {
+    transform: scale(1.2);
+    background-color: greenyellow;
+    border: 2px solid black;
+    color: yellow;
+    border-radius: 99px;
+}
+
+div#d1 {
+    background-color: lightgray;
+    width: 200px;
+    height: auto;
+    border: 2px solid black;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+input {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: rgb(255, 255, 255);
+    border: 2px solid black;
+    color: rgb(0, 0, 0);
+}
+
+input:hover {
+    transform: scale(1.2);
+    background-color: rgb(183, 255, 197);
+    border: 2px solid black;
+    color: rgb(255, 0, 0);
+}

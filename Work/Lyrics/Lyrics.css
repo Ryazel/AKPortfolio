@@ -1,0 +1,55 @@
+div {
+    background-color: lightgray;
+    border: 2px solid black;
+    border-radius: 30px;
+}
+#title {
+    background-color: white;
+    text-align: center;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;    
+    border-top: 2px solid black;
+}
+
+#desc {
+    background-color: white;
+    text-align: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    border-bottom: 2px solid black;
+}
+
+#lyricslist {
+    background-color: rgb(0, 179, 255);
+    width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 2px;
+}
+
+#idnumber {
+    color: white;
+    text-align: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: black;
+    border: 2px solid gray;
+    display: block;
+    width: 20px;
+    height: auto;
+}
+
+#linkdesc {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    background-color: white;
+    border: 2px solid black;
+    border-radius: 2px;
+}
+
+#arrow {
+    color: white;
+    text-align: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: black;
+    border: 2px solid gray;
+    display: block;
+    width: auto;
+    height: auto;
+}
