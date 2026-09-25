@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Output</title>
+    <link rel="stylesheet" href="examstyle.css">
+</head>
+<body>
+    <div id="div1">
+        <h1 id="processtitle">Results</h1>
+        <div id="div2">
+            <div id="div3">
+            <hr>
+            <p><i>This file is originaly a php <a href="https://github.com/Ryazel/AKPortfolio/tree/main/Work/OOP/basicproject">(can be found in the repository)</a>, changed to html for github.io</i></p>
+            <hr>
+            <p>Name: <b id="out-name"></b></p>
+            <p>Subject: <b id="out-subject"></b></p>
+            <p>Score: <b id="out-score"></b></p>
+            <p><b id="out-status"></b></p>
+            </div>
+        </div>
+        <a href="index.html"><p id="back">GO BACK</p></a>
+    </div>
+    <script>
+        class Student {
+            constructor() {
+                this.names = "";
+                this.subjects = "";
+                this.scores = "";
+            }
+
+            setName(names) {
+                this.names = names;
+            }
+
+            setSubject(subjects) {
+                this.subjects = subjects;
+            }
+
+            setScores(scores) {
+                const num = Number(scores);
+                if (num >= 0 && num <= 100) {
+                    this.scores = num;
+                } else {
+                    this.scores = "INVALID INPUT <br><i>Scores must be around 0-100 range</i>";
+                }
+            }
+
+            requirement() {
+                if (typeof this.scores === "number" && this.scores >= 70 && this.scores <= 100) {
+                    return "Status: Passed <br> <hr>";
+                } else if (typeof this.scores === "number" && this.scores >= 0 && this.scores < 70) {
+                    return "Status: Not Passed <br> <hr>";
+                } else {
+                    return "Status: Undecided <br> <hr>";
+                }
+            }
+
+            getName() {
+                return this.names;
+            }
+
+            getSubject() {
+                return this.subjects;
+            }
+
+            getScores() {
+                return this.scores;
+            }
+        }
+
+        const params = new URLSearchParams(window.location.search);
+        const person1 = new Student();
+        person1.setName(params.get("names") || "");
+        person1.setSubject(params.get("subject") || "");
+        person1.setScores(params.get("score"));
+
+        document.getElementById("out-name").textContent = person1.getName();
+        document.getElementById("out-subject").textContent = person1.getSubject();
+        document.getElementById("out-score").innerHTML = person1.getScores();
+        document.getElementById("out-status").innerHTML = person1.requirement();
+    </script>
+</body>
+</html>
